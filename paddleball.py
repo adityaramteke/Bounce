@@ -18,29 +18,38 @@ class Ball:
         self.canvas.move(self.id, self.x, self.y)
         pos = self.canvas.coords(self.id)
         if pos[1] <= 0:
-            self.y = 2
+            self.y = 5
         if pos[3] >= self.canvas_height:
-            self.y = -2
+            self.y = -5
         if pos[0] <= 0:
-            self.x = 2
+            self.x = 5
         if pos[2] >= self.canvas_width:
-            self.x = -2
+            self.x = -5
 
+class Paddle:
+    def __init__(self, canvas, color):
+        self.canvas = canvas
+        self.id = self.canvas.create_rectangle(0, 0, 100, 8, fill=color)
+        self.canvas.move(self.id, 200, 300)
+
+    def move():
+        pass
 
 tk = Tk()
 tk.title("Bounce")
 tk.resizable(0, 0)
 tk.wm_attributes("-topmost", 1)
-canvas = Canvas(tk, width=500, height=400, bd=0, highlightthickness=0)
+canvas = Canvas(tk, width=600, height=400, bd=0, highlightthickness=0)
 canvas.pack()
 tk.update()
 
 ball = Ball(canvas, 'green')
+paddle = Paddle(canvas, 'red')
 
 while 1:
         ball.move()
         tk.update_idletasks()
         tk.update()
-        time.sleep(0.01)
+        time.sleep(0.03)
 
 tk.mainloop()
