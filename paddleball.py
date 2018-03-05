@@ -1,7 +1,6 @@
 from tkinter import *
 import time
 import random
-count = 1
 
 class Ball:
     def __init__(self, canvas, paddle, color):
@@ -33,8 +32,6 @@ class Ball:
             self.hit_bottom = True
         if self.hit_paddle(pos) == True:
             self.y = -3
-            #count += 1
-            #print(count)
         if pos[0] <= 0:
             self.x = 3
         if pos[2] >= self.canvas_width:
